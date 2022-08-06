@@ -6,9 +6,9 @@
                     class="d-inline-block align-text-top">
                 Weather Now <span class="badge rounded-pill text-primary bg-light">247</span>
             </span>
-            <form class="d-flex" #form="ngForm" (submit)="onSubmit()">
+            <form class="d-flex" #form="ngForm" (ngSubmit)="form.valid&&onSubmit()">
                 <input class="form-control me-2" placeholder="Enter City eg: {{cityName}}" aria-label="Enter City"
-                    type="text" name="city" [(ngModel)]="cityName2">
+                    type="text" name="city" #city="ngModel" [(ngModel)]="cityName2" required>
                 <button class="btn btn-outline-light fw-bold" type="submit">Search</button>
             </form>
         </div>
