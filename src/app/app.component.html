@@ -10,7 +10,7 @@
     </nav>
 
 
-    <div class="container pt-4">
+    <div class="container py-4">
         <!-- <div class="upper-data">
             <img src="../assets/img/hot_square.png" *ngIf="14 > 15">
             <img src="../assets/img/cold_square.png" *ngIf="14 <= 15">
@@ -19,16 +19,65 @@
 
         </div> -->
 
-        <div class="card shadow mx-auto col-lg-5 col-md-6 col-sm-8 col-10">
-            <img src="../assets/img/hot_google.png" class="card-img-top">
+        <div class="card mx-auto col-lg-5 col-md-6 col-sm-8 col-10 p-4"
+            style="box-shadow: 4px 4px 5px rgb(50, 50, 50);">
+            <img src="../assets/img/hot_google.png" class="card-img-top" *ngIf="14 > 15">
+            <img src="../assets/img/cold_google.png" class="card-img-top" *ngIf="14 <= 15">
 
-            <div class="card-img-overlay text-center text-white d-flex flex-column" style="padding-top: 80%;">
-                <span class="fs-2 fw-bold " style="text-shadow: 2px 2px 3px rgb(0, 0, 0);"> Image Heading </span>
-                <span class="fs-s fw-bold " style="text-shadow: 2px 2px 3px rgb(0, 0, 0);">Image sub Heading</span>
+            <div class="card-img-overlay text-center text-white d-flex flex-column" style="padding-top: 70%;">
+                <span class="weather-location fs-4 fw-bold " style="text-shadow: 2px 2px 3px rgb(0, 0, 0);"> New Delhi
+                </span>
+                <span class="weather-temperature fs-1 fw-bold " style="text-shadow: 2px 2px 3px rgb(0, 0, 0);">{{ 14.40
+                    | number: '1.0-0'}}°C</span>
             </div>
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+            <div class="card-body p-0">
+                <div class="more-info-label text-primary h4 fw-bold py-3">
+                    More Info
+                </div>
+                <div class="more-info-container col d-flex flex-row flex-wrap ">
+
+                    <div class="info-block w-50 d-flex flex-row pb-3">
+                        <div class="info-block-label w-50 d-flex flex-column justify-content-center align-items-center">
+                            <img src="../assets/img/max_temp.png" style="width: 40px; height: 40px;" alt="">
+                            <span class="h6">max</span>
+                        </div>
+                        <div class="info-block-value w-50 d-flex justify-content-start align-items-center h6">
+                            10°C
+                        </div>
+                    </div>
+
+                    <div class="info-block w-50 d-flex flex-row pb-3">
+                        <div class="info-block-label w-50 d-flex flex-column justify-content-center align-items-center">
+                            <img src="../assets/img/min_temp.png" style="width: 40px; height: 40px;" alt="">
+                            <span class="h6">min</span>
+                        </div>
+                        <div class="info-block-value w-50 d-flex justify-content-start align-items-center h6">
+                            4°C
+                        </div>
+                    </div>
+
+                    <div class="info-block w-50 d-flex flex-row pb-3">
+                        <div class="info-block-label w-50 d-flex flex-column justify-content-center align-items-center">
+                            <img src="../assets/img/Humidity.png" style="width: 40px; height: 40px;" alt="">
+                            <span class="h6">humidity</span>
+                        </div>
+                        <div class="info-block-value w-50 d-flex justify-content-start align-items-center h6">
+                            20%
+                        </div>
+                    </div>
+
+                    <div class="info-block w-50 d-flex flex-row pb-3">
+                        <div class="info-block-label w-50 d-flex flex-column justify-content-center align-items-center">
+                            <img src="../assets/img/windy_icon.jpg" style="width: 40px; height: 40px;" alt="">
+                            <span class="h6">wind</span>
+                        </div>
+                        <div class="info-block-value w-50 d-flex justify-content-start align-items-center h6">
+                            11 km/hr
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
 
@@ -36,6 +85,9 @@
 
     </div>
 
+
+
+    <button type="button" class="btn btn-primary" (click)="getInfo()">Weather</button>
 
 
 
