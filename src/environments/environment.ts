@@ -4,11 +4,13 @@
 
 export const environment = {
   production: false,
-  weaterApiBaseUrl: 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather',
-  XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
-  XRapidAPIHostHeaderValue: 'weather-by-api-ninjas.p.rapidapi.com',
-  XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
-  XRapidAPIKeyHeaderVale: '88f266f83bmshee519f2555fed09p1f23e6jsn9c0e475b6637'
+  // weaterApiBaseUrl: 'https://weather-by-api-ninjas.p.rapidapi.com/v1/weather',
+  // XRapidAPIHostHeaderName: 'X-RapidAPI-Host',
+  // XRapidAPIHostHeaderValue: 'weather-by-api-ninjas.p.rapidapi.com',
+  // XRapidAPIKeyHeaderName: 'X-RapidAPI-Key',
+  // XRapidAPIKeyHeaderVale: '88f266f83bmshee519f2555fed09p1f23e6jsn9c0e475b6637'
+  weaterApiBaseUrl: 'https://api.openweathermap.org/data/2.5/weather',
+  ApiKey: 'a712dd44faeeaaa993b6cc3ffedbb56c'
 };
 
 /*

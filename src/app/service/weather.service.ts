@@ -11,13 +11,23 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  getWeatherData(cityName: string): Observable<WeatherData> {
+  // getWeatherData(cityName: string,units:string): Observable<WeatherData> {
+  //   return this.http.get<WeatherData>(environment.weaterApiBaseUrl, {
+  //     headers: new HttpHeaders()
+  //       .set(environment.XRapidAPIHostHeaderName, environment.XRapidAPIHostHeaderValue)
+  //       .set(environment.XRapidAPIKeyHeaderName, environment.XRapidAPIKeyHeaderVale),
+  //     params: new HttpParams()
+  //       .set('city', cityName)
+  //   })
+  // }
+
+  //using httpClient method
+  getWeatherData(cityName: string,units:string): Observable<WeatherData> {
     return this.http.get<WeatherData>(environment.weaterApiBaseUrl, {
-      headers: new HttpHeaders()
-        .set(environment.XRapidAPIHostHeaderName, environment.XRapidAPIHostHeaderValue)
-        .set(environment.XRapidAPIKeyHeaderName, environment.XRapidAPIKeyHeaderVale),
       params: new HttpParams()
-        .set('city', cityName)
+        .set('q', cityName)
+        .set('units',units)
+        .set('appid', environment.ApiKey)
     })
   }
 }

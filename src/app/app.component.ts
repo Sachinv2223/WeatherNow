@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.cityName = 'Kochi';
-    this.weatherService.getWeatherData(this.cityName)
+    this.weatherService.getWeatherData(this.cityName,this.units)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
 
   title = 'WeatherNow';
   cityName: string = '';
+  units:string = 'metric'
   cityName2: string = '';
   weatherData?: WeatherData;
 
@@ -42,13 +43,18 @@ export class AppComponent implements OnInit {
     this.cityName2 = '';
   }
 
-  private getInfo(city: string) {
-    this.weatherService.getWeatherData(city)
+  private getInfo(city: string, units:string ='metric') {
+    this.weatherService.getWeatherData(city,units)
       .subscribe({
         next: (res) => {
           console.log(res);
           this.weatherData = res;
-        }
+        },
+         error: (err) => {
+          console.log(`${city} isn't a valid city name`);
+          console.log(err.error.cod);
+          console.log(err.error.message);
+         }
       });
   }
 }
