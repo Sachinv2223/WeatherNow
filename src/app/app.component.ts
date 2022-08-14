@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { WeatherData } from './model/weather.model';
 import { WeatherService } from './service/weather.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,11 +11,11 @@ import { WeatherService } from './service/weather.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.cityName = 'Kochi';
-    this.weatherService.getWeatherData(this.cityName,this.units)
+    this.weatherService.getWeatherData(this.cityName, this.units)
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -24,9 +26,9 @@ export class AppComponent implements OnInit {
 
   title = 'WeatherNow';
   cityName: string = '';
-  units:string = 'metric'
-  cityName2: string = '';
+  units: string = 'metric'
   weatherData?: WeatherData;
+  errCode: number = 0;
 
   // getInfo() {
   //   this.weatherService.getWeatherData(this.cityName)
@@ -38,23 +40,36 @@ export class AppComponent implements OnInit {
   // }
 
   onSubmit() {
-    this.cityName = this.cityName2;
     this.getInfo(this.cityName);
-    this.cityName2 = '';
   }
 
-  private getInfo(city: string, units:string ='metric') {
-    this.weatherService.getWeatherData(city,units)
+  private getInfo(city: string, units: string = 'metric') {
+    this.weatherService.getWeatherData(city, units)
       .subscribe({
         next: (res) => {
           console.log(res);
           this.weatherData = res;
         },
-         error: (err) => {
+        error: (err) => {
           console.log(`${city} isn't a valid city name`);
           console.log(err.error.cod);
           console.log(err.error.message);
-         }
+          // alert(`${city} isn't a valid city name`);
+
+          // using ngz toaster
+          // this.toastr.error(`${city} isn't a valid city name`,'ERROR',{
+          //   closeButton: true,
+          //   progressBar: true,
+          //   toastClass: 'ngx-toastr',
+          //   positionClass: 'toast-top-right'
+          // });
+
+          //using boostrap toaster
+          this.errCode = 1;
+          setTimeout(() => {
+            this.errCode = 0;
+          }, 5000);
+        }
       });
   }
 }

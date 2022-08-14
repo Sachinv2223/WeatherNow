@@ -7,24 +7,38 @@
                 Weather Now <span class="badge rounded-pill text-primary bg-light">247</span>
             </span>
             <form class="d-flex" #form="ngForm" (ngSubmit)="form.valid&&onSubmit()">
-                <input class="form-control me-2" placeholder="Enter City eg: {{cityName}}" aria-label="Enter City"
-                    type="text" name="city" #city="ngModel" [(ngModel)]="cityName2" required>
+                <input class="form-control me-2" placeholder="Enter a Valid City Name" aria-label="Enter City"
+                    type="text" name="city" #city="ngModel" [(ngModel)]="cityName" required>
                 <button class="btn btn-outline-light fw-bold" type="submit">Search</button>
             </form>
         </div>
     </nav>
 
 
-    <div class="container pt-4 pb-5">
-        <!-- <div class="upper-data">
-            <img src="../assets/img/hot_square.png" *ngIf="14 > 15">
-            <img src="../assets/img/cold_square.png" *ngIf="14 <= 15">
+    <div class="inner-container pt-4 pb-4" style="position: relative;">
+
+          
+        <div class="toast-container" style="position: absolute; top: 10px; right: 10px; z-index: 99;">
+
+
+            <!-- Using Boostrap toaster start -->
+            <div *ngIf="errCode === 1" class="toast show align-items-center text-bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ERROR! Invalid input
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                        aria-label="Close"></button>
+                </div>
+            </div>
+            <!-- Using Boostrap toaster end -->
+
         </div>
-        <div class="lower-data">
 
-        </div> -->
 
-        <div class="card mx-auto col-lg-5 col-md-6 col-sm-8 col-10 p-4" style="box-shadow: 4px 4px 5px rgb(50, 50, 50);"
+
+
+        <div class="card mx-auto col-lg-4 col-md-5 col-sm-6 col-9 p-4" style="box-shadow: 4px 4px 5px rgb(50, 50, 50);"
             *ngIf="weatherData">
 
             <img src="../assets/img/hot_google.png" class="card-img-top" *ngIf="weatherData.main.temp > 15">
